@@ -1,23 +1,21 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
-const registrationSchema = mongoose.Schema({
+const registrationSchema = mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+    },
+    event: {
+      type: mongoose.Types.ObjectId,
+      ref: "Event",
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    phone: { type: Number, required: true },
-    address: { type: String, required: true },
-    age: { type: Number, required: true },
-    gender: { type: String, required: true },
-
-
-
-
-
-}, {
-    timestamps: true
-})
-
-const Registration = mongoose.model('Registration', registrationSchema);
+const Registration = mongoose.model("Registration", registrationSchema);
 
 export default Registration;
